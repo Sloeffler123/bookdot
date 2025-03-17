@@ -13,9 +13,13 @@ def letters_in_book(file_path):
             if i not in letters and i.isalpha() == True:
                 occurances = file_content.count(i)
                 letters.update({i : occurances,})
-        print(letters) 
+        return letters
 
-def organized_dict():
-    # sorted_dict_letters = dict(sorted(letters.items())) 
-    # print(sorted_dict_letters)  
-    pass
+
+
+def organized_dict(file_path): 
+    sorted_dict_letters = dict(sorted(letters_in_book('books/frankenstein.txt').items(), key=lambda x:x[1], reverse=True))
+    
+    for k,v in sorted_dict_letters.items():
+        print(f'{k}: {v}')
+    
