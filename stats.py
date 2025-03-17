@@ -2,8 +2,8 @@ def words_in_book(file_path):
     with open(file_path) as file:
         file_content = file.read().split()
         num_words = len(file_content)    
-    print(f'{num_words} words found in the document')
-
+    return num_words
+    
 def letters_in_book(file_path):
     with open(file_path) as file:
         file_content = file.read().lower()
@@ -15,11 +15,13 @@ def letters_in_book(file_path):
                 letters.update({i : occurances,})
         return letters
 
-
-
 def organized_dict(file_path): 
-    sorted_dict_letters = dict(sorted(letters_in_book('books/frankenstein.txt').items(), key=lambda x:x[1], reverse=True))
-    
+    sorted_dict_letters = dict(sorted(letters_in_book(file_path).items(), key=lambda x:x[1], reverse=True))
+    print('============ BOOKBOT ============')
+    print(f'Analyzing book found at {file_path}')
+    print('----------- Word Count ----------')
+    print(f'Found {words_in_book(file_path)} total words')
+    print('--------- Character Count -------')
     for k,v in sorted_dict_letters.items():
         print(f'{k}: {v}')
-    
+    print('============= END ===============')
